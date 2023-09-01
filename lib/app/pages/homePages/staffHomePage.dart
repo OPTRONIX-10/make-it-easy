@@ -5,7 +5,9 @@ import 'package:make_it_easy/app/widgets/common_widgets/text_widget.dart';
 import 'billForm.dart';
 
 class StaffHomePage extends StatefulWidget {
-  const StaffHomePage({super.key});
+  const StaffHomePage({
+    super.key,
+  });
 
   @override
   State<StaffHomePage> createState() => _HomePageState();
@@ -19,9 +21,22 @@ class _HomePageState extends State<StaffHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User@1234'),
+        title: Text(
+          'User@1234',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: appTheme,
         centerTitle: true,
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'LogOut',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 50, horizontal: 40),
@@ -76,7 +91,7 @@ class _HomePageState extends State<StaffHomePage> {
                   fontSize: 15,
                   textColor: Colors.grey,
                   isBold: true),
-              BillForm(),
+              BillForm()
             ],
           ),
         ),

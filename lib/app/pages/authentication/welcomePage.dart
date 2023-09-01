@@ -3,6 +3,7 @@ import 'package:make_it_easy/app/shared/constants.dart';
 import 'package:make_it_easy/app/widgets/common_widgets/text_widget.dart';
 import 'package:make_it_easy/app/widgets/common_widgets/widget_button.dart';
 
+import '../../widgets/common_widgets/bottomSheetFn.dart';
 import 'loginOptions.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -10,17 +11,6 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _showBottomSheet() {
-      showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return Container(
-              padding: EdgeInsets.symmetric(vertical: 80.0, horizontal: 60),
-              child: LoginOptions(),
-            );
-          });
-    }
-
     return Scaffold(
       backgroundColor: appTheme,
       body: SafeArea(
@@ -29,7 +19,14 @@ class WelcomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //image
-
+              TextWidget(
+                  text: 'AppImage',
+                  fontSize: 30,
+                  textColor: Colors.white,
+                  isBold: true),
+              SizedBox(
+                height: 8,
+              ),
               //appname
               TextWidget(
                   text: 'AppName',
@@ -53,8 +50,7 @@ class WelcomePage extends StatelessWidget {
                     fontSize: 17,
                     textColor: Colors.black,
                     isBold: true),
-                function: _showBottomSheet,
-                textColor: Colors.black,
+                function: () => ShowBottomSheet(context, const LoginOptions()),
                 buttonBgColor: Colors.white,
                 buttonHeight: 50,
                 buttonWidth: 130,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:make_it_easy/app/pages/authentication/page_signIn.dart';
+import 'package:make_it_easy/app/pages/authentication/page_signUp.dart';
 import 'package:make_it_easy/app/shared/constants.dart';
 import 'package:make_it_easy/app/widgets/common_widgets/text_widget.dart';
 import 'package:make_it_easy/app/widgets/common_widgets/widget_button.dart';
@@ -25,7 +27,10 @@ class LoginOptions extends StatelessWidget {
               fontSize: 23,
               textColor: Colors.white,
               isBold: true),
-          function: () {},
+          function: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => SignInPage()));
+          },
           buttonBgColor: appTheme,
           buttonHeight: 50,
           buttonWidth: 250,
@@ -58,7 +63,10 @@ class LoginOptions extends StatelessWidget {
                 textColor: null,
                 isBold: true),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => SignUpPage()));
+                },
                 child: TextWidget(
                     text: 'Register',
                     fontSize: 16,

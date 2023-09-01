@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:make_it_easy/app/pages/homePages/staffHomePage.dart';
 import 'package:make_it_easy/app/widgets/common_widgets/text_widget.dart';
 
 import '../../shared/constants.dart';
@@ -39,6 +40,8 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   TextFormField(
                     controller: _emailController,
+                    validator: (value) =>
+                        value == null || value.isEmpty ? 'Empty Field' : null,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.person),
                         hintText: 'Email',
@@ -51,6 +54,8 @@ class _SignInPageState extends State<SignInPage> {
                   TextFormField(
                     controller: _passwordController,
                     obscureText: _showPassword,
+                    validator: (value) =>
+                        value == null || value.isEmpty ? 'Empty Field' : null,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.key),
                         suffixIcon: IconButton(
@@ -78,7 +83,14 @@ class _SignInPageState extends State<SignInPage> {
                         fontSize: 23,
                         textColor: Colors.white,
                         isBold: true),
-                    function: () {},
+                    function: () {
+                      if (_formKey.currentState!.validate()) {
+                        if (_emailController.text == _passwordController.text) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => StaffHomePage()));
+                        }
+                      }
+                    },
                     buttonBgColor: appTheme,
                     buttonHeight: 55,
                     buttonWidth: 170,
